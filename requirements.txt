@@ -1,0 +1,9 @@
+accelerate
+datasets
+fire
+numba
+opencv_python_headless
+ort_nightly_gpu
+peft
+rembg[gpu]
+wandb
