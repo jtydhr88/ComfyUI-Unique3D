@@ -3,6 +3,7 @@
 **ComfyUI Unique3D** is custom nodes that running [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) into ComfyUI
 
 (this repo is still WIP and only working on Windows!)
+![1](docs/1.png)
 
 ## Credit
 - [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) - High-Quality and Efficient 3D Mesh Generation from a Single Image
