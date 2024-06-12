@@ -1,53 +1,16 @@
-(This repo is archived due to [ComfyUI-3D-Pack](https://github.com/MrForExample/ComfyUI-3D-Pack) supports InstantMesh, please check 3D-Pack directly if you need it)
-# ComfyUI InstantMesh
+# ComfyUI Unique3D
 
-**ComfyUI InstantMesh** is custom nodes that running [TencentARC/InstantMesh](https://github.com/TencentARC/InstantMesh) into ComfyUI
+**ComfyUI Unique3D** is custom nodes that running [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) into ComfyUI
 
-![overall](docs/overall.png)
-
-## Installation
-
-Make sure you also install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools).
-![overall](docs/vstool.png)
-This extension depends on [ComfyUI-3D-Pack](https://github.com/MrForExample/ComfyUI-3D-Pack), please install it if not, and make sure it works well:
-1. stop ComfyUI if it is running
-2. goto `ComfyUI/custom_nodes` dir in terminal(cmd)
-3. `git clone https://github.com/MrForExample/ComfyUI-3D-Pack`
-4. cd `ComfyUI-3D-Pack`
-5. run `install_windows_portable_win_py311_cu121.bat`
-
-(Don't start ComfyUI at this moment)  
-Then, install this extension:
-1. `git clone https://github.com/jtydhr88/ComfyUI-InstantMesh`
-2. cd `ComfyUI-InstantMesh`
-3. run `install_windows_portable_win_py311_cu121.bat`
-
-Start your ComfyUI.
-
-## How to use
-
-Currently, this extension implements two custom nodes, `InstantMeshLoader` and `InstantMeshRun`
-
-Regarding `InstantMeshLoader`, there are four configurations for checkpoints, please refer to [TencentARC/InstantMesh](https://github.com/TencentARC/InstantMesh) for more details.
-
-A simple workflow looks like:
-![simple-connection](docs/overall.png) 
-And you can find it at [simple-workflow](instantMesh-workflow.json)  
-After generated, you could find results, mesh or texture, under `ComfyUI/custom_nodes/ComfyUI-InstantMesh/output` folder.
-
-Another workflow I provided - [example-workflow](example-workflow.json), generate 3D mesh from ComfyUI generated image, it requires:
-1. Main checkpoint - [ReV Animated](https://civitai.com/models/7371/rev-animated)
-2. Lora - [Clay Render Style](https://civitai.com/models/108464/clay-render-style)
-
-It will generate gypsum style 3D model: 
-![example-workflow1](docs/example-workflow1.png) 
+(this repo is still WIP and only working on Windows!)
 
 ## Credit
-- [TencentARC/InstantMesh](https://github.com/TencentARC/InstantMesh) - Efficient 3D Mesh Generation from a Single Image with Sparse-view Large Reconstruction Models
+- [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) - High-Quality and Efficient 3D Mesh Generation from a Single Image
 - [ComfyUI](https://github.com/comfyanonymous/ComfyUI) - A powerful and modular stable diffusion GUI.
 - [ComfyUI-3D-Pack](https://github.com/MrForExample/ComfyUI-3D-Pack) - An extensive node suite that enables ComfyUI to process 3D inputs (Mesh & UV Texture, etc) using cutting edge algorithms (3DGS, NeRF, etc.)
 
 ## My extensions for ComfyUI
+- [ComfyUI-Unique3D](https://github.com/jtydhr88/ComfyUI-Unique3D) - ComfyUI Unique3D is custom nodes that running Unique3D into ComfyUI
 - [ComfyUI-LayerDivider](https://github.com/jtydhr88/ComfyUI-LayerDivider) - ComfyUI InstantMesh is custom nodes that generating layered psd files inside ComfyUI
 - [ComfyUI-InstantMesh](https://github.com/jtydhr88/ComfyUI-InstantMesh) - ComfyUI InstantMesh is custom nodes that running InstantMesh into ComfyUI
 - [ComfyUI-ImageMagick](https://github.com/jtydhr88/ComfyUI-ImageMagick) - This extension implements custom nodes that integreated ImageMagick into ComfyUI
