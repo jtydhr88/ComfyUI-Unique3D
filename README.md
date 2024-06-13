@@ -2,8 +2,57 @@
 
 **ComfyUI Unique3D** is custom nodes that running [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) into ComfyUI
 
-(this repo is still WIP and only working on Windows!)
+(this repo is still WIP and only working on Windows! Because I only have Windows, not setup any WSL or Docker locally yet)
 ![1](docs/1.png)
+
+**!!It is highly recommend that downloads a new ComfyUI bundle to try this!!**
+
+## VS Build Tool- Setup
+It might require Visual Studio Build Tools. However, I am not sure because my local already installed previously. If it needs, you can find from [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools).
+
+## ComfyUI 3D Pack - Setup
+1. git clone https://github.com/MrForExample/ComfyUI-3D-Pack.git in custom_notes folder
+2. run install_windows_portable_win_py311_cu121.bat inside ComfyUI-3D-Pack
+3. run ComfyUI (run_nvidia_gpu.bat) to check 3D-Pack installed successfully.
+   1. (On my local, it has error) pytorch3d import _C - ImportError: DLL load failed while importing _C: 找不到指定的程序
+      1. {comfyUI_python_embeded}\python.exe -m pip uninstall pytorch3d
+      2. {comfyUI_python_embeded}\python.exe -m pip install git+https://github.com/facebookresearch/pytorch3d.git@stable
+   2. (On my local, it has error) python.exe 无法找到入口，_catter_cuda.pyd
+      1. {comfyUI_python_embeded}\python.exe -m pip uninstall torch_scatter
+      2. {comfyUI_python_embeded}\python.exe -m pip install torch_scatter
+   3. run ComfyUI to check again.
+
+please refer [ComfyUI-3D-Pack](https://github.com/MrForExample/ComfyUI-3D-Pack) for more details
+
+## ComfyUI Unique3D - Setup
+1. git clone https://github.com/jtydhr88/ComfyUI-Unique3D.git in custom_notes folder
+2. Download the trition whl from https://huggingface.co/madbuda/triton-windows-builds, because it uses python 311, so download whl build for py311 and place it under ComfyUI-Unique3D folder.
+3. run install_windows_portable_win_py311_cu121.bat inside ComfyUI-Unique3D
+   1. answer Y while asking remove something
+4. Download the weights from [huggingface spaces](https://huggingface.co/spaces/Wuvin/Unique3D/tree/main/ckpt) or [Tsinghua Cloud Drive](https://cloud.tsinghua.edu.cn/d/319762ec478d46c8bdf7/), and extract it to `ckpt/*`.
+```
+ComfyUI-Unique3D
+    ├──ckpt
+        ├── controlnet-tile/
+        ├── image2normal/
+        ├── img2mvimg/
+        ├── realesrgan-x4.onnx
+        └── v1-inference.yaml
+```
+
+## Runtime ##
+Before start ComfyUI, you also need:
+1. Due to ComfyUI running on torch.inference_mode, we need to disable it for now
+   1. go to ComfyUI folder, and edit execution.py by text editor, find keyword with torch.inference_mode(), change it to torch.inference_mode(False)
+2. create a tmp folder under your drive, might be F:\tmp\gradio
+3. You will see the error of onnxruntime, but it would not effect the generation of the mesh (maybe?)
+   1. If you want to fix this the TensorRT error, you need to download TensorRT bundle for windows from https://github.com/NVIDIA/TensorRT, and configure TensorRT-10.0.1.6\lib in your PATH env variable. meanwhile it also needs to configure CUDA and cuDNN, please refer to github page for more details.
+
+## Workflow ##
+I provided one example workflow, see workflow/example-workflow1.json
+
+## Node Explain ##
+(TODO, also since this repo still is WIP, nodes might be changed later)
 
 ## Credit
 - [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) - High-Quality and Efficient 3D Mesh Generation from a Single Image
