@@ -1,141 +1,26 @@
 {
-  "last_node_id": 30,
-  "last_link_id": 44,
+  "last_node_id": 33,
+  "last_link_id": 57,
   "nodes": [
-    {
-      "id": 28,
-      "type": "Unique3DLoadPipeline",
-      "pos": [
-        965,
-        503
-      ],
-      "size": {
-        "0": 315,
-        "1": 82
-      },
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "pipe",
-          "type": "Unique3DPipeline",
-          "links": [
-            41
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Unique3DLoadPipeline"
-      },
-      "widgets_values": [
-        true,
-        true
-      ]
-    },
-    {
-      "id": 30,
-      "type": "Unique3DRun",
-      "pos": [
-        1417,
-        224
-      ],
-      "size": {
-        "0": 315,
-        "1": 174
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 42
-        },
-        {
-          "name": "pipe",
-          "type": "Unique3DPipeline",
-          "link": 41
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": [
-            43
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "mesh_path",
-          "type": "STRING",
-          "links": [
-            44
-          ],
-          "shape": 3,
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Unique3DRun"
-      },
-      "widgets_values": [
-        true,
-        true,
-        true,
-        true,
-        "std"
-      ]
-    },
-    {
-      "id": 27,
-      "type": "PreviewImage",
-      "pos": [
-        1927,
-        27
-      ],
-      "size": {
-        "0": 210,
-        "1": 246
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 43
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      }
-    },
     {
       "id": 13,
       "type": "[Comfy3D] Preview 3DMesh",
       "pos": [
-        1854,
-        349
+        1886,
+        313
       ],
       "size": [
         600,
         500
       ],
       "flags": {},
-      "order": 4,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
           "name": "mesh_file_path",
           "type": "STRING",
-          "link": 44,
+          "link": 57,
           "widget": {
             "name": "mesh_file_path"
           }
@@ -150,11 +35,183 @@
       ]
     },
     {
+      "id": 27,
+      "type": "PreviewImage",
+      "pos": [
+        1924,
+        -70
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 56
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 31,
+      "type": "Unique3DRun - MVPrediction",
+      "pos": [
+        883,
+        113
+      ],
+      "size": {
+        "0": 315,
+        "1": 78
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 46
+        }
+      ],
+      "outputs": [
+        {
+          "name": "rgb_pils",
+          "type": "PILS",
+          "links": [
+            53
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "front_pil",
+          "type": "PIL",
+          "links": [
+            54
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Unique3DRun - MVPrediction"
+      },
+      "widgets_values": [
+        true
+      ]
+    },
+    {
+      "id": 33,
+      "type": "Unique3DRun - Geo Reconstruct",
+      "pos": [
+        1364,
+        -12
+      ],
+      "size": {
+        "0": 315,
+        "1": 190
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 52
+        },
+        {
+          "name": "rgb_pils",
+          "type": "PILS",
+          "link": 53
+        },
+        {
+          "name": "front_pil",
+          "type": "PIL",
+          "link": 54
+        },
+        {
+          "name": "pipe",
+          "type": "Unique3DPipeline",
+          "link": 55
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            56
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mesh_path",
+          "type": "STRING",
+          "links": [
+            57
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Unique3DRun - Geo Reconstruct"
+      },
+      "widgets_values": [
+        true,
+        true,
+        true,
+        "std"
+      ]
+    },
+    {
+      "id": 28,
+      "type": "Unique3DLoadPipeline",
+      "pos": [
+        880,
+        319
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "pipe",
+          "type": "Unique3DPipeline",
+          "links": [
+            55
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Unique3DLoadPipeline"
+      },
+      "widgets_values": [
+        true,
+        true
+      ]
+    },
+    {
       "id": 29,
       "type": "LoadImage",
       "pos": [
-        990,
-        50
+        408,
+        -16
       ],
       "size": {
         "0": 315,
@@ -168,7 +225,8 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            42
+            46,
+            52
           ],
           "shape": 3,
           "slot_index": 0
@@ -177,46 +235,71 @@
           "name": "MASK",
           "type": "MASK",
           "links": null,
-          "shape": 3
+          "shape": 3,
+          "slot_index": 1
         }
       ],
       "properties": {
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "bag.png",
+        "ex2.png",
         "image"
       ]
     }
   ],
   "links": [
     [
-      41,
-      28,
-      0,
-      30,
-      1,
-      "Unique3DPipeline"
-    ],
-    [
-      42,
+      46,
       29,
       0,
-      30,
+      31,
       0,
       "IMAGE"
     ],
     [
-      43,
-      30,
+      52,
+      29,
+      0,
+      33,
+      0,
+      "IMAGE"
+    ],
+    [
+      53,
+      31,
+      0,
+      33,
+      1,
+      "PILS"
+    ],
+    [
+      54,
+      31,
+      1,
+      33,
+      2,
+      "PIL"
+    ],
+    [
+      55,
+      28,
+      0,
+      33,
+      3,
+      "Unique3DPipeline"
+    ],
+    [
+      56,
+      33,
       0,
       27,
       0,
       "IMAGE"
     ],
     [
-      44,
-      30,
+      57,
+      33,
       1,
       13,
       0,
@@ -227,10 +310,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6830134553650705,
+      "scale": 0.5131581182307067,
       "offset": [
-        -262.9056528863404,
-        313.2147132796889
+        -862.5329322363407,
+        728.7980341796883
       ]
     }
   },
