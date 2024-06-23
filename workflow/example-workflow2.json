@@ -1,0 +1,715 @@
+{
+  "last_node_id": 39,
+  "last_link_id": 54,
+  "nodes": [
+    {
+      "id": 31,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -602,
+        326
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 40
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            42
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "badhandv4, paintings, sketches, (worst qualit:2), (low quality:2), (normal quality:2), lowers, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, age spot, (outdoor:1.6), manboobs, (backlight:1.2), double navel, muted arms, hused arms, neck lace, analog, analog effects, (sunglass:1.4), nipples, nsfw, bad architecture, watermark, (mole:1.5),"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "LoraLoader",
+      "pos": [
+        -942,
+        -63
+      ],
+      "size": {
+        "0": 315,
+        "1": 126
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 36
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 37
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            38
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            39,
+            40
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "GrayClay_V1.5.5.safetensors",
+        1,
+        1
+      ]
+    },
+    {
+      "id": 26,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -1306,
+        -205
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            36
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            37
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            44
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "revAnimated_v122EOL.safetensors"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -865,
+        -435
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            45
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ]
+    },
+    {
+      "id": 35,
+      "type": "SaveImage",
+      "pos": [
+        665,
+        -652
+      ],
+      "size": {
+        "0": 315,
+        "1": 270
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 47
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 23,
+      "type": "PreviewImage",
+      "pos": [
+        1193,
+        -453
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 50
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 33,
+      "type": "VAEDecode",
+      "pos": [
+        91,
+        -275
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 43
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            47,
+            48,
+            49
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 38,
+      "type": "Unique3DRun - Geo Reconstruct",
+      "pos": [
+        785,
+        -240
+      ],
+      "size": {
+        "0": 315,
+        "1": 190
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 49
+        },
+        {
+          "name": "rgb_pils",
+          "type": "PILS",
+          "link": 52
+        },
+        {
+          "name": "front_pil",
+          "type": "PIL",
+          "link": 53
+        },
+        {
+          "name": "pipe",
+          "type": "Unique3DPipeline",
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            50
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mesh_path",
+          "type": "STRING",
+          "links": [
+            51
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Unique3DRun - Geo Reconstruct"
+      },
+      "widgets_values": [
+        true,
+        true,
+        true,
+        "std"
+      ]
+    },
+    {
+      "id": 36,
+      "type": "Unique3DRun - MVPrediction",
+      "pos": [
+        372,
+        -173
+      ],
+      "size": {
+        "0": 315,
+        "1": 78
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 48
+        }
+      ],
+      "outputs": [
+        {
+          "name": "rgb_pils",
+          "type": "PILS",
+          "links": [
+            52
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "front_pil",
+          "type": "PIL",
+          "links": [
+            53
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Unique3DRun - MVPrediction"
+      },
+      "widgets_values": [
+        true
+      ]
+    },
+    {
+      "id": 37,
+      "type": "Unique3DLoadPipeline",
+      "pos": [
+        403,
+        -8
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "pipe",
+          "type": "Unique3DPipeline",
+          "links": [
+            54
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Unique3DLoadPipeline"
+      },
+      "widgets_values": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": 28,
+      "type": "KSampler",
+      "pos": [
+        -315,
+        -375
+      ],
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 38
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 41
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 42
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 45
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            43
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        815813582542284,
+        "randomize",
+        20,
+        8,
+        "euler",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 30,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -585,
+        32
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 39
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            41
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Gray clay style,(masterpiece, best quality), front view,facing front.Grayscale,a girl,dainty, perfect face, pretty face, lush detail, half body"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "[Comfy3D] Preview 3DMesh",
+      "pos": [
+        1166,
+        -37
+      ],
+      "size": [
+        600,
+        500
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mesh_file_path",
+          "type": "STRING",
+          "link": 51,
+          "widget": {
+            "name": "mesh_file_path"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "[Comfy3D] Preview 3DMesh"
+      },
+      "widgets_values": [
+        "",
+        null
+      ]
+    }
+  ],
+  "links": [
+    [
+      36,
+      26,
+      0,
+      27,
+      0,
+      "MODEL"
+    ],
+    [
+      37,
+      26,
+      1,
+      27,
+      1,
+      "CLIP"
+    ],
+    [
+      38,
+      27,
+      0,
+      28,
+      0,
+      "MODEL"
+    ],
+    [
+      39,
+      27,
+      1,
+      30,
+      0,
+      "CLIP"
+    ],
+    [
+      40,
+      27,
+      1,
+      31,
+      0,
+      "CLIP"
+    ],
+    [
+      41,
+      30,
+      0,
+      28,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      42,
+      31,
+      0,
+      28,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      43,
+      28,
+      0,
+      33,
+      0,
+      "LATENT"
+    ],
+    [
+      44,
+      26,
+      2,
+      33,
+      1,
+      "VAE"
+    ],
+    [
+      45,
+      34,
+      0,
+      28,
+      3,
+      "LATENT"
+    ],
+    [
+      47,
+      33,
+      0,
+      35,
+      0,
+      "IMAGE"
+    ],
+    [
+      48,
+      33,
+      0,
+      36,
+      0,
+      "IMAGE"
+    ],
+    [
+      49,
+      33,
+      0,
+      38,
+      0,
+      "IMAGE"
+    ],
+    [
+      50,
+      38,
+      0,
+      23,
+      0,
+      "IMAGE"
+    ],
+    [
+      51,
+      38,
+      1,
+      13,
+      0,
+      "STRING"
+    ],
+    [
+      52,
+      36,
+      0,
+      38,
+      1,
+      "PILS"
+    ],
+    [
+      53,
+      36,
+      1,
+      38,
+      2,
+      "PIL"
+    ],
+    [
+      54,
+      37,
+      0,
+      38,
+      3,
+      "Unique3DPipeline"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5131581182307067,
+      "offset": [
+        1677.7584774308298,
+        1026.3476074230393
+      ]
+    }
+  },
+  "version": 0.4
+}

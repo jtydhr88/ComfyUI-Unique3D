@@ -2,12 +2,11 @@
 
 **ComfyUI Unique3D** is custom nodes that running [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) into ComfyUI
 
-(this repo is still WIP and only working on Windows! Because I only have Windows, not setup any WSL or Docker locally yet)
 ![1](docs/1.png)
 
 **!!It is highly recommend that downloads a new ComfyUI bundle to try this!!**
 
-## VS Build Tool- Setup
+## (Windows) VS Build Tool- Setup 
 It might require Visual Studio Build Tools. However, I am not sure because my local already installed previously. If it needs, you can find from [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools).
 
 ## ComfyUI 3D Pack - Setup
@@ -26,8 +25,8 @@ please refer [ComfyUI-3D-Pack](https://github.com/MrForExample/ComfyUI-3D-Pack) 
 
 ## ComfyUI Unique3D - Setup
 1. git clone https://github.com/jtydhr88/ComfyUI-Unique3D.git in custom_notes folder
-2. Download the trition whl from https://huggingface.co/madbuda/triton-windows-builds, because it uses python 311, so download whl build for py311 and place it under ComfyUI-Unique3D folder.
-3. run install_windows_portable_win_py311_cu121.bat inside ComfyUI-Unique3D
+2. (Windows) Download the trition whl from https://huggingface.co/madbuda/triton-windows-builds, because it uses python 311, so download whl build for py311 and place it under ComfyUI-Unique3D folder.
+3. (Windows) run install_windows_portable_win_py311_cu121.bat inside ComfyUI-Unique3D
    1. answer Y while asking remove something
 4. Download the weights from [huggingface spaces](https://huggingface.co/spaces/Wuvin/Unique3D/tree/main/ckpt) or [Tsinghua Cloud Drive](https://cloud.tsinghua.edu.cn/d/319762ec478d46c8bdf7/), and extract it to `ckpt/*`.
 ```
@@ -42,14 +41,30 @@ ComfyUI-Unique3D
 
 ## Runtime ##
 1. The output folder is your **ComfyUI/output/Unique3D/**
-2. You might see the error of onnxruntime, but it would not effect the generation of the mesh (maybe?)
+2. You might see the error of onnxruntime, but it would not affect the generation of the mesh (maybe?)
    1. If you want to fix this the TensorRT error, you need to download TensorRT bundle for windows from https://github.com/NVIDIA/TensorRT, and configure TensorRT-10.0.1.6\lib in your PATH env variable. meanwhile it also needs to configure CUDA and cuDNN, please refer to github page for more details.
 
 ## Workflow ##
 I provided one example workflow, see [example-workflow1](workflow/example-workflow1.json)
 
+Another workflow I provided - [example-workflow2](docs/example-workflow2.json), generate 3D mesh from ComfyUI generated image, it requires:
+1. Main checkpoint - [ReV Animated](https://civitai.com/models/7371/rev-animated)
+2. Lora - [Clay Render Style](https://civitai.com/models/108464/clay-render-style)
+
+It will generate gypsum style 3D model: 
+![example-workflow2](docs/example-workflow2.png) 
+
 ## Node Explain ##
-(TODO, also since this repo still is WIP, nodes might be changed later)
+Currently, it has three custom nodes.
+
+### Unique3DLoadPipeline
+TODO
+
+### Unique3DRun - MVPrediction
+TODO
+
+### Unique3DRun - Geo Reconstruct
+TODO
 
 ## Credit
 - [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) - High-Quality and Efficient 3D Mesh Generation from a Single Image
