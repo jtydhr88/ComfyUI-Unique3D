@@ -9,6 +9,8 @@ from mesh_reconstruction.func import make_star_cameras_orthographic, make_star_c
 from mesh_reconstruction.render import NormalsRenderer, Pytorch3DNormalsRenderer
 from ..scripts.utils import to_py3d_mesh, init_target
 
+
+@torch.inference_mode(False)
 def reconstruct_stage1(pils: List[Image.Image], steps=100, vertices=None, faces=None, start_edge_len=0.15, end_edge_len=0.005, decay=0.995, return_mesh=True, loss_expansion_weight=0.1, gain=0.1):
     vertices, faces = vertices.to("cuda"), faces.to("cuda")
     assert len(pils) == 4

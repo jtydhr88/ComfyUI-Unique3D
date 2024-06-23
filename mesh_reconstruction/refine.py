@@ -9,6 +9,7 @@ from mesh_reconstruction.render import NormalsRenderer, Pytorch3DNormalsRenderer
 from ..scripts.project_mesh import multiview_color_projection, get_cameras_list
 from ..scripts.utils import to_py3d_mesh, from_py3d_mesh, init_target
 
+@torch.inference_mode(False)
 def run_mesh_refine(vertices, faces, pils: List[Image.Image], steps=100, start_edge_len=0.02, end_edge_len=0.005, decay=0.99, update_normal_interval=10, update_warmup=10, return_mesh=True, process_inputs=True, process_outputs=True):
     if process_inputs:
         vertices = vertices * 2 / 1.35

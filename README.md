@@ -41,11 +41,8 @@ ComfyUI-Unique3D
 ```
 
 ## Runtime ##
-Before start ComfyUI, you also need:
-1. Due to ComfyUI running on torch.inference_mode, we need to disable it for now
-   1. go to ComfyUI folder, and edit execution.py by text editor, find keyword with torch.inference_mode(), change it to torch.inference_mode(False)
-2. output folder is your **ComfyUI/output/Unique3D**
-3. You will see the error of onnxruntime, but it would not effect the generation of the mesh (maybe?)
+1. The output folder is your **ComfyUI/output/Unique3D/**
+2. You might see the error of onnxruntime, but it would not effect the generation of the mesh (maybe?)
    1. If you want to fix this the TensorRT error, you need to download TensorRT bundle for windows from https://github.com/NVIDIA/TensorRT, and configure TensorRT-10.0.1.6\lib in your PATH env variable. meanwhile it also needs to configure CUDA and cuDNN, please refer to github page for more details.
 
 ## Workflow ##
