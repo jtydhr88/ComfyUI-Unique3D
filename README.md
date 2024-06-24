@@ -1,3 +1,4 @@
+(ComfyUI-3D-Pack has other implemented for Unique3D, please refer to https://github.com/MrForExample/ComfyUI-3D-Pack.git)
 # ComfyUI Unique3D
 
 **ComfyUI Unique3D** is custom nodes that running [AiuniAI/Unique3D](https://github.com/AiuniAI/Unique3D) into ComfyUI
