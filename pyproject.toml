@@ -10,6 +10,6 @@ Repository = "https://github.com/jtydhr88/ComfyUI-Unique3D"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "jtydhr88"
 DisplayName = "ComfyUI-Unique3D"
 Icon = ""
