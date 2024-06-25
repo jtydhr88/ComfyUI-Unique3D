@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-unique3d"
+description = "ComfyUI Unique3D is custom nodes that running AiuniAI/Unique3D into ComfyUI[w/Please follow readme to install with ComfyUI embedded python.]"
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["accelerate", "datasets", "fire", "numba", "opencv_python_headless", "ort_nightly_gpu", "peft", "rembg[gpu]", "wandb"]
+
+[project.urls]
+Repository = "https://github.com/jtydhr88/ComfyUI-Unique3D"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Unique3D"
+Icon = ""
