@@ -7,9 +7,12 @@ import folder_paths
 
 comfy_path = os.path.dirname(folder_paths.__file__)
 
-unique3d_path = f'{comfy_path}/custom_nodes/ComfyUI-Unique3D'
+if 'ComfyUI-Unique3D' not in comfy_path:
+    unique3d_path = os.path.join(comfy_path, 'custom_nodes', 'ComfyUI-Unique3D')
 
-sys.path.append(unique3d_path)
+    sys.path.append(unique3d_path)
+else:
+    unique3d_path = comfy_path
 
 from PIL import Image
 import numpy as np

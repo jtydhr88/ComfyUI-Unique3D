@@ -1,4 +1,4 @@
-pretrained_model_name_or_path: "#YOUR_COMFYUI_PATH#/custom_nodes/ComfyUI-Unique3D/ckpt/img2mvimg"
+pretrained_model_name_or_path: "#YOUR_COMFYUI_PATH#/ckpt/img2mvimg"
 mixed_precision: "bf16"
 
 init_config: 
