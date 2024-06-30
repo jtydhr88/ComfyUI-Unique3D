@@ -8,7 +8,6 @@ import json
 import abc
 from diffusers.utils import make_image_grid
 import numpy as np
-import wandb
 
 from custum_3d_diffusion.trainings.utils import load_config
 from custum_3d_diffusion.custum_modules.unifield_processor import ConfigurableUNet2DConditionModel, AttnConfig
@@ -159,6 +158,8 @@ class BasicTrainer(torch.nn.Module, abc.ABC):
                 np_images = np.stack([np.asarray(img) for img in images])
                 tracker.writer.add_images("validation", np_images, global_step, dataformats="NHWC")
             elif tracker.name == "wandb":
+                import wandb
+
                 [image.thumbnail((512, 512)) for image, title in zip(images, titles) if 'noresize' not in title]   # inplace operation
                 tracker.log({"validation": [
                     wandb.Image(image, caption=f"{i}: {titles[i]}", file_type="jpg")
