@@ -23,10 +23,16 @@ with open(yaml_path, 'w', encoding='utf-8') as file:
 
 sys.path.append(unique3d_path)
 
-parent_dir = os.path.dirname(comfy_path)
-python_embeded_path = os.path.join(parent_dir, 'python_embeded', 'Scripts')
+python_executable_path = sys.executable
+print("python_executable_path: ", python_executable_path)
 
-os.environ['PATH'] = os.environ['PATH'] + ";" + python_embeded_path
+python_embeded_path = os.path.dirname(python_executable_path)
+
+print("python_embeded_path: ", python_embeded_path)
+
+python_scripts_path = os.path.join(python_embeded_path, 'Scripts')
+
+os.environ['PATH'] = os.environ['PATH'] + ";" + python_scripts_path
 
 from PIL import Image
 from pytorch3d.structures import Meshes
