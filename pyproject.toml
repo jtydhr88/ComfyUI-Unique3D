@@ -2,7 +2,7 @@
 name = "comfyui-unique3d"
 description = "ComfyUI Unique3D is custom nodes that running AiuniAI/Unique3D into ComfyUI[w/Please follow readme to install with ComfyUI embedded python.]"
 version = "1.0.0"
-license = "LICENSE"
+license = { file = "LICENSE" }
 dependencies = ["accelerate", "datasets", "fire", "numba", "opencv_python_headless", "ort_nightly_gpu", "peft", "rembg[gpu]", "wandb"]
 
 [project.urls]
